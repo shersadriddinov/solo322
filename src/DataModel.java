@@ -2,21 +2,27 @@ import java.sql.*;
 import java.lang.*;
 
 public class DataModel {
+    Connection connection;
+    // Establishing connection to Database
+    public DataModel(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
+                    "javaBet", "12345");
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
 
     // Accounts table
     public void insertToAccount(String login) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
-                    "javaBet", "12345");
-
             String query = "insert into accounts (Login_Name)" + "values (?)";
             PreparedStatement pre = connection.prepareStatement(query);
             pre.setString(1, login);
             pre.execute();
-
-            connection.close();
             System.out.println("Successfully added");
+            connection.close();
         } catch (Exception e){
             System.out.println(e);
         }
@@ -30,16 +36,13 @@ public class DataModel {
                                     int cur_balance,
                                     int gen_income)*/ {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
-                    "javaBet", "12345");
-
             String query = "select ID from accounts" + "where Login_Name = " + login;
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
             System.out.println("Data base returned: ");
             int id = rs.getInt("1");
             System.out.println(id);
+            System.out.println();
         } catch (Exception e){
             System.out.println(e);
         }

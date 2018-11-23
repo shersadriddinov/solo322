@@ -11,16 +11,17 @@ public class MainController {
             int choose;
             System.out.println("1. To add new account");
             System.out.println("2. To add new transaction");
+            System.out.println("3. Exit");
             choose = input.nextInt();
             switch (choose){
                 case 1:
                     Login_Name();
-                    flag = false;
                     break;
                 case 2:
                     addTransaction();
-                    flag = false;
                     break;
+                case 3:
+                    System.exit(0);
                     default:
                         System.out.println("Enter appropriate integer to choose");
                         break;
