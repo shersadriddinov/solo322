@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
-public class Main {
+public class MainController {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
+        DataModel data = new DataModel();
+        // Add Login_Name to account
         System.out.println("Enter login name to create account: ");
         String login;
         login = input.nextLine();
-        DataController data = new DataController();
-        data.connectToSQL(login);
+        data.insetToAccount(login);
     }
 }

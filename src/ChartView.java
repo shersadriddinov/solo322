@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class Chart extends Application {
+public class ChartView extends Application {
 
     @Override public void start(Stage stage) {
         stage.setTitle("Scatter Chart Sample");
@@ -42,6 +42,7 @@ public class Chart extends Application {
         series1.getData().add(new XYChart.Data(1.8, 81.4));
         series1.getData().add(new XYChart.Data(7.3, 110.3));
         series1.getData().add(new XYChart.Data(2.7, 41.2));
+        series1.getData().add(new XYChart.Data(1,200));
 
         sc.setPrefSize(500, 400);
         sc.getData().addAll(series1);

@@ -1,12 +1,15 @@
 import java.sql.*;
 import java.lang.*;
 
-public class DataController{
-    public void connectToSQL(String login){
+public class DataModel{
+    public void insetToAccount(String login){
+        String query = "insert into accounts (Login_Name)" + "values (?)";
+        connectToSQL(query, login);
+    }
+    public void connectToSQL(String query, String login){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet", "javaBet", "12345");
-            String query = "insert into accounts(Login_Name)" + "values (?)";
             PreparedStatement pre = connection.prepareStatement(query);
             pre.setString(1, login);
             pre.execute();
