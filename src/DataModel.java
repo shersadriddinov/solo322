@@ -46,6 +46,10 @@ public class DataModel {
             cur_balance = rs.getDouble("Cur_Balance");
             gen_income = rs.getDouble("Gen_Income");
             if (type_with == 1){
+                if (cur_balance < sum){
+                    System.out.println("No sufficient founds to proceed the step");
+                    System.exit(0);
+                }
                 cur_balance -= sum;
             } else {
                 cur_balance += sum;
@@ -66,10 +70,27 @@ public class DataModel {
     // Betting history
     public void insertToBettig_history(String login, String bet, double total_strake, double odds, int status){
         double benefit;
+        int type_with;
         if (status == 1){
+            type_with = 0;
             benefit = total_strake * odds;
         } else {
+            type_with = 1;
             benefit = 0;
+        }
+        try{
+            Statement st = connection.createStatement();
+
+            String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + login + "'";
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+            int id = rs.getInt(1);
+
+            insertToTransactions(login, 1, type_with, total_strake);
+            st.executeUpdate("INSERT INTO bet_history(account_id, Bet, Total_Strake, Benefit, Odds, Status) " +
+                    "values ('" + id + "', '" + bet + "', '" + total_strake + "', '"+ benefit + "', '" + odds + "', '" + status + "')");
+        } catch (Exception e){
+            System.out.println(e);
         }
     }
 }

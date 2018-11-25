@@ -9,7 +9,8 @@ public class MainController {
             int choose;
             System.out.println("1. To add new account");
             System.out.println("2. To add new transaction");
-            System.out.println("3. Exit");
+            System.out.println("3. To add new bet");
+            System.out.println("4. Exit");
             choose = input.nextInt();
             switch (choose){
                 case 1:
@@ -19,6 +20,9 @@ public class MainController {
                     addTransaction();
                     break;
                 case 3:
+                    addBet();
+                    break;
+                case 4:
                     System.exit(0);
                     default:
                         System.out.println("Enter appropriate integer to choose");
@@ -60,5 +64,33 @@ public class MainController {
         double sum = input.nextInt();
 
         data.insertToTransactions(login, type_bet, type_with, sum);
+    }
+
+    // Add bet to bet_history
+    public static void addBet(){
+        Scanner input = new Scanner(System.in);
+        DataModel data = new DataModel();
+
+        // Enter Login
+        System.out.println("Enter login: ");
+        String login = input.nextLine();
+
+        // Enter Bet
+        System.out.println("Enter bet: ");
+        String bet = input.nextLine();
+
+        // Enter Sum
+        System.out.println("Enter total strake: ");
+        double total_strake = input.nextDouble();
+
+        // Enter odd
+        System.out.println("Enter odd: ");
+        double odd = input.nextDouble();
+
+        // Enter status
+        System.out.println("Result: YES (1) or NO (0)");
+        int status = input.nextInt();
+
+        data.insertToBettig_history(login, bet, total_strake, odd, status);
     }
 }
