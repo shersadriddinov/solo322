@@ -28,13 +28,8 @@ public class DataModel {
         }
     }
 
-    // bet_history table
-    public void insertToBet_history(String login,
-                                    int type_bet,
-                                    int type_with,
-                                    int sum,
-                                    int cur_balance,
-                                    int gen_income) {
+    // Transactions table
+    public void insertToTransactions(String login, int type_bet, int type_with, int sum, int cur_balance, int gen_income) {
         try {
             int id;
             Statement st = connection.createStatement();
@@ -51,4 +46,6 @@ public class DataModel {
             System.out.println(e);
         }
     }
+
+    //
 }

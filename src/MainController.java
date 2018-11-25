@@ -67,6 +67,6 @@ public class MainController {
         System.out.println("Enter general income: ");
         int gen = input.nextInt();
 
-        data.insertToBet_history(login, type_bet, type_with, sum, cur, gen);
+        data.insertToTransactions(login, type_bet, type_with, sum, cur, gen);
     }
 }
