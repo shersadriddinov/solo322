@@ -48,7 +48,7 @@ public class MainController {
         String login = input.nextLine();
 
         // Enter Transaction type_bet
-        System.out.println("Bet(1) or Withdrawal operation(0)?: ");
+        System.out.println("Bet(1) or Bank transaction(0)?: ");
         int type_bet = input.nextInt();
 
         // Enter Transaction type_with
@@ -57,16 +57,8 @@ public class MainController {
 
         // Sum
         System.out.println("Enter sum: ");
-        int sum = input.nextInt();
+        double sum = input.nextInt();
 
-        // Current Balance
-        System.out.println("Enter current balance: ");
-        int cur = input.nextInt();
-
-        // General income
-        System.out.println("Enter general income: ");
-        int gen = input.nextInt();
-
-        data.insertToTransactions(login, type_bet, type_with, sum, cur, gen);
+        data.insertToTransactions(login, type_bet, type_with, sum);
     }
 }

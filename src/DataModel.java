@@ -29,17 +29,33 @@ public class DataModel {
     }
 
     // Transactions table
-    public void insertToTransactions(String login, int type_bet, int type_with, int sum, int cur_balance, int gen_income) {
+    public void insertToTransactions(String login, int type_bet, int type_with, double sum) {
         try {
-            int id;
+            double cur_balance;
+            double gen_income;
             Statement st = connection.createStatement();
-
-            st.executeUpdate("INSERT INTO accounts(Login_Name)" + "values('" + login + "')");
 
             String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + login + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
-            id = rs.getInt( 1);
+            int id = rs.getInt(1);
+
+            query = "SELECT Cur_Balance, Gen_Income FROM transactions WHERE account_id = " + "'" + id + "'";
+            rs = st.executeQuery(query);
+            rs.next();
+            cur_balance = rs.getDouble("Cur_Balance");
+            gen_income = rs.getDouble("Gen_Income");
+            if (type_with == 1){
+                cur_balance -= sum;
+            } else {
+                cur_balance += sum;
+            }
+            if (type_bet == 1 && type_with == 1 || type_bet == 0 && type_with == 0){
+                gen_income -= sum;
+            } else {
+                gen_income += sum;
+            }
+
             st.executeUpdate("INSERT INTO transactions(account_id, Type_bet, Type_withdrawal, Sum, Cur_balance, Gen_income)" +
                     "values('" + id + "', '" + type_bet + "', '" + type_with + "', '" + sum + "', '" + cur_balance + "', '" + gen_income + "')");
         } catch (Exception e){
@@ -47,5 +63,13 @@ public class DataModel {
         }
     }
 
-    //
+    // Betting history
+    public void insertToBettig_history(String login, String bet, double total_strake, double odds, int status){
+        double benefit;
+        if (status == 1){
+            benefit = total_strake * odds;
+        } else {
+            benefit = 0;
+        }
+    }
 }
