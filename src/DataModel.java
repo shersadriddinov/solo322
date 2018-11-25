@@ -29,21 +29,24 @@ public class DataModel {
     }
 
     // bet_history table
-    public void insertToBet_history(String login)
-                                    /*boolean type_bet,
-                                    boolean type_with,
+    public void insertToBet_history(String login,
+                                    int type_bet,
+                                    int type_with,
                                     int sum,
                                     int cur_balance,
-                                    int gen_income)*/ {
+                                    int gen_income) {
         try {
-            String query = "SELECT ID FROM accounts WHERE Login_Name" + " = " + "'" + login + "'";
+            int id;
             Statement st = connection.createStatement();
+
+            st.executeUpdate("INSERT INTO accounts(Login_Name)" + "values('" + login + "')");
+
+            String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + login + "'";
             ResultSet rs = st.executeQuery(query);
-            System.out.println("Data base returned: ");
-            while (rs.next()){
-                int id = rs.getInt(1);
-                System.out.println(id);
-            }
+            rs.next();
+            id = rs.getInt( 1);
+            st.executeUpdate("INSERT INTO transactions(account_id, Type_bet, Type_withdrawal, Sum, Cur_balance, Gen_income)" +
+                    "values('" + id + "', '" + type_bet + "', '" + type_with + "', '" + sum + "', '" + cur_balance + "', '" + gen_income + "')");
         } catch (Exception e){
             System.out.println(e);
         }

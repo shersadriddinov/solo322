@@ -43,9 +43,30 @@ public class MainController {
         Scanner input = new Scanner(System.in);
         DataModel data = new DataModel();
 
+        // Enter Login
         System.out.println("Enter login: ");
-        String login;
-        login = input.nextLine();
-        data.insertToBet_history(login);
+        String login = input.nextLine();
+
+        // Enter Transaction type_bet
+        System.out.println("Bet(1) or Withdrawal operation(0)?: ");
+        int type_bet = input.nextInt();
+
+        // Enter Transaction type_with
+        System.out.println("Withdrawal(1) or deposit(0)?: ");
+        int type_with = input.nextInt();
+
+        // Sum
+        System.out.println("Enter sum: ");
+        int sum = input.nextInt();
+
+        // Current Balance
+        System.out.println("Enter current balance: ");
+        int cur = input.nextInt();
+
+        // General income
+        System.out.println("Enter general income: ");
+        int gen = input.nextInt();
+
+        data.insertToBet_history(login, type_bet, type_with, sum, cur, gen);
     }
 }
