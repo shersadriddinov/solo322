@@ -1,10 +1,8 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class MainController {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        DataModel data = new DataModel();
 
         boolean flag = true;
         while (flag){

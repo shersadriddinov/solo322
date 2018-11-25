@@ -36,13 +36,14 @@ public class DataModel {
                                     int cur_balance,
                                     int gen_income)*/ {
         try {
-            String query = "select ID from accounts" + "where Login_Name = " + login;
+            String query = "SELECT ID FROM accounts WHERE Login_Name" + " = " + "'" + login + "'";
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
             System.out.println("Data base returned: ");
-            int id = rs.getInt("1");
-            System.out.println(id);
-            System.out.println();
+            while (rs.next()){
+                int id = rs.getInt(1);
+                System.out.println(id);
+            }
         } catch (Exception e){
             System.out.println(e);
         }
