@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MainController {
@@ -61,7 +62,7 @@ public class MainController {
 
         // Sum
         System.out.println("Enter sum: ");
-        double sum = input.nextInt();
+        float sum = input.nextFloat();
 
         data.insertToTransactions(login, type_bet, type_with, sum);
     }
@@ -70,6 +71,7 @@ public class MainController {
     public static void addBet(){
         Scanner input = new Scanner(System.in);
         DataModel data = new DataModel();
+        input.useLocale(Locale.US);
 
         // Enter Login
         System.out.println("Enter login: ");
@@ -91,6 +93,6 @@ public class MainController {
         System.out.println("Result: YES (1) or NO (0)");
         int status = input.nextInt();
 
-        data.insertToBettig_history(login, bet, total_strake, odd, status);
+        data.insertToBetting_history(login, bet, total_strake, odd, status);
     }
 }

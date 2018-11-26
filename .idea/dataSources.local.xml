@@ -2,9 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="javabet@localhost" uuid="3e3ef408-e148-42be-95cc-33c17450dd56">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
       <user-name>javaBet</user-name>
       <introspection-schemas>*:*</introspection-schemas>
     </data-source>
