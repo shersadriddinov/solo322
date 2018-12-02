@@ -107,8 +107,21 @@ public class DataModel {
         }
     }
 
-    // get Bet_history
-    public void getBet_history(String login){
-        int id = verify_login(login);
+    // get Size
+    public void getSize(String login){
+        try {
+            int id = verify_login(login);
+            String query = "SELECT MAX(Total_Strake), MAX(Odds) FROM bet_history WHERE account_id = " + "'" + id + "'";
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+
+            double sum = rs.getDouble(1);
+            double odd = rs.getDouble(2);
+
+            System.out.println(sum);
+            System.out.println(odd);
+        } catch (Exception e){
+            System.out.println(e);
+        }
     }
 }

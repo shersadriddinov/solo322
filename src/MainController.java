@@ -11,7 +11,8 @@ public class MainController {
             System.out.println("1. To add new account");
             System.out.println("2. To add new transaction");
             System.out.println("3. To add new bet");
-            System.out.println("4. Exit");
+            System.out.println("4. To get");
+            System.out.println("5. Exit");
             choose = input.nextInt();
             switch (choose){
                 case 1:
@@ -24,6 +25,9 @@ public class MainController {
                     addBet();
                     break;
                 case 4:
+                    get();
+                    break;
+                case 5:
                     System.exit(0);
                     default:
                         System.out.println("Enter appropriate integer to choose");
@@ -97,5 +101,14 @@ public class MainController {
         int status = input.nextInt();
 
         data.insertToBetting_history(login, bet, total_strake, odd, status);
+    }
+    public static void get(){
+        Scanner input = new Scanner(System.in);
+        DataModel data = new DataModel();
+
+        System.out.println("Enter login: ");
+        String login = input.nextLine();
+
+        data.getSize(login);
     }
 }

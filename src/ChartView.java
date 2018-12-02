@@ -14,18 +14,17 @@ import javafx.stage.Stage;
 public class ChartView extends Application {
 
     @Override public void start(Stage stage) {
-        stage.setTitle("Scatter Chart Sample");
+        stage.setTitle("Solo 322");
         final NumberAxis xAxis = new NumberAxis(0, 10, 1);
         final NumberAxis yAxis = new NumberAxis(0, 500, 100);
-        final ScatterChart<Number,Number> sc =
-                new ScatterChart<Number,Number>(xAxis,yAxis);
+        final ScatterChart<Number,Number> sc = new ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("Coefficient");
         yAxis.setLabel("Sum");
         sc.setTitle("Rate overview");
 
         XYChart.Series series1 = new XYChart.Series();
 
-        series1.setName("Option 1");
+        series1.setName("Bet");
         series1.getData().add(new XYChart.Data(4.2, 193.2));
         series1.getData().add(new XYChart.Data(2.8, 33.6));
         series1.getData().add(new XYChart.Data(6.2, 24.8));
