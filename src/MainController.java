@@ -38,9 +38,12 @@ public class MainController {
         DataModel data = new DataModel();
 
         System.out.println("Enter login name to create account: ");
-        String login;
-        login = input.nextLine();
-        data.insertToAccount(login);
+        String login = input.nextLine();
+
+        System.out.println("Add first deposit to your account: ");
+        double sum = input.nextDouble();
+
+        data.insertToAccount(login, sum);
     }
 
     // Add Transactions to account

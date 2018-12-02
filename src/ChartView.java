@@ -35,7 +35,7 @@ public class ChartView extends Application {
         series1.getData().add(new XYChart.Data(8.5, 323));
         series1.getData().add(new XYChart.Data(6.9, 289.8));
         series1.getData().add(new XYChart.Data(9.9, 287.1));
-        series1.getData().add(new XYChart.Data(0.9100, 217));
+        series1.getData().add(new XYChart.Data(5.6, 217));
         series1.getData().add(new XYChart.Data(3.2, 150.8));
         series1.getData().add(new XYChart.Data(4.8, 20.8));
         series1.getData().add(new XYChart.Data(7.3, 42.3));
