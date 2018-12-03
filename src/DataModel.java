@@ -4,6 +4,8 @@ import java.lang.*;
 public class DataModel {
     Connection connection;
     Statement st;
+    public static double sum, odd;
+
     // Establishing connection to Database
     public DataModel(){
         try{
@@ -114,12 +116,8 @@ public class DataModel {
             String query = "SELECT MAX(Total_Strake), MAX(Odds) FROM bet_history WHERE account_id = " + "'" + id + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
-
-            double sum = rs.getDouble(1);
-            double odd = rs.getDouble(2);
-
-            System.out.println(sum);
-            System.out.println(odd);
+            this.sum = rs.getDouble(1);
+            this.odd = rs.getDouble(2);
         } catch (Exception e){
             System.out.println(e);
         }

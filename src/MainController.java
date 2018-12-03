@@ -1,7 +1,9 @@
+import javafx.application.Application;
+
 import java.util.Locale;
 import java.util.Scanner;
 
-public class MainController {
+public class MainController extends DataModel {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
 
@@ -11,7 +13,7 @@ public class MainController {
             System.out.println("1. To add new account");
             System.out.println("2. To add new transaction");
             System.out.println("3. To add new bet");
-            System.out.println("4. To get");
+            System.out.println("4. To play");
             System.out.println("5. Exit");
             choose = input.nextInt();
             switch (choose){
@@ -25,7 +27,7 @@ public class MainController {
                     addBet();
                     break;
                 case 4:
-                    get();
+                    play(args);
                     break;
                 case 5:
                     System.exit(0);
@@ -37,7 +39,7 @@ public class MainController {
     }
 
     // Add Login_Name to account
-    public static void Login_Name(){
+    private static void Login_Name(){
         Scanner input = new Scanner(System.in);
         DataModel data = new DataModel();
 
@@ -51,7 +53,7 @@ public class MainController {
     }
 
     // Add Transactions to account
-    public static void addTransaction(){
+    private static void addTransaction(){
         Scanner input = new Scanner(System.in);
         DataModel data = new DataModel();
 
@@ -75,7 +77,7 @@ public class MainController {
     }
 
     // Add bet to bet_history
-    public static void addBet(){
+    private static void addBet(){
         Scanner input = new Scanner(System.in);
         DataModel data = new DataModel();
         input.useLocale(Locale.US);
@@ -102,13 +104,16 @@ public class MainController {
 
         data.insertToBetting_history(login, bet, total_strake, odd, status);
     }
-    public static void get(){
+
+    public static void play(String[] args){
         Scanner input = new Scanner(System.in);
         DataModel data = new DataModel();
 
+        // Enter Login
         System.out.println("Enter login: ");
         String login = input.nextLine();
 
         data.getSize(login);
+        Application.launch(ChartView.class, args);
     }
 }

@@ -13,10 +13,15 @@ import javafx.stage.Stage;
 
 public class ChartView extends Application {
 
-    @Override public void start(Stage stage) {
+    DataModel data = new DataModel();
+    public double Sum = data.sum + (data.sum/5);
+    public double Odd = data.odd + (data.odd/5);
+
+    @Override
+    public void start(Stage stage) {
         stage.setTitle("Solo 322");
-        final NumberAxis xAxis = new NumberAxis(0, 10, 1);
-        final NumberAxis yAxis = new NumberAxis(0, 500, 100);
+        final NumberAxis xAxis = new NumberAxis(0, Odd, 1);
+        final NumberAxis yAxis = new NumberAxis(0, Sum, 100);
         final ScatterChart<Number,Number> sc = new ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("Coefficient");
         yAxis.setLabel("Sum");
