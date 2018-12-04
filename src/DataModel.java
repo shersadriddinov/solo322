@@ -1,10 +1,13 @@
 import java.sql.*;
 import java.lang.*;
+import java.util.LinkedList;
 
 public class DataModel {
     Connection connection;
     Statement st;
     public static double sum, odd;
+    LinkedList<Double> total_strake = new LinkedList<Double>();
+    LinkedList<Double> odds = new LinkedList<Double>();
 
     // Establishing connection to Database
     public DataModel(){
@@ -116,8 +119,23 @@ public class DataModel {
             String query = "SELECT MAX(Total_Strake), MAX(Odds) FROM bet_history WHERE account_id = " + "'" + id + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
-            this.sum = rs.getDouble(1);
-            this.odd = rs.getDouble(2);
+            sum = rs.getDouble(1);
+            odd = rs.getDouble(2);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    // get Bet
+    public void getBet(String login){
+        try{
+            int id = verify_login(login);
+            String query = "SELECT * FROM bet_history WHERE account_id = " + "'" + id + "'";
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                total_strake.add(rs.getDouble(5));
+                odds.add(rs.getDouble(7));
+            }
         } catch (Exception e){
             System.out.println(e);
         }

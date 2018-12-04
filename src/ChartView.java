@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.util.LinkedList;
 
 
 public class ChartView extends Application {
@@ -20,8 +21,8 @@ public class ChartView extends Application {
     @Override
     public void start(Stage stage) {
         stage.setTitle("Solo 322");
-        final NumberAxis xAxis = new NumberAxis(0, Odd, 1);
-        final NumberAxis yAxis = new NumberAxis(0, Sum, 100);
+        final NumberAxis xAxis = new NumberAxis(0, Odd, (Odd / 20));
+        final NumberAxis yAxis = new NumberAxis(0, Sum, (Sum / 20));
         final ScatterChart<Number,Number> sc = new ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("Coefficient");
         yAxis.setLabel("Sum");
@@ -30,25 +31,13 @@ public class ChartView extends Application {
         XYChart.Series series1 = new XYChart.Series();
 
         series1.setName("Bet");
-        series1.getData().add(new XYChart.Data(4.2, 193.2));
-        series1.getData().add(new XYChart.Data(2.8, 33.6));
-        series1.getData().add(new XYChart.Data(6.2, 24.8));
-        series1.getData().add(new XYChart.Data(1, 14));
-        series1.getData().add(new XYChart.Data(1.2, 26.4));
-        series1.getData().add(new XYChart.Data(4.4, 114.4));
-        series1.getData().add(new XYChart.Data(8.5, 323));
-        series1.getData().add(new XYChart.Data(6.9, 289.8));
-        series1.getData().add(new XYChart.Data(9.9, 287.1));
-        series1.getData().add(new XYChart.Data(5.6, 217));
-        series1.getData().add(new XYChart.Data(3.2, 150.8));
-        series1.getData().add(new XYChart.Data(4.8, 20.8));
-        series1.getData().add(new XYChart.Data(7.3, 42.3));
-        series1.getData().add(new XYChart.Data(1.8, 81.4));
-        series1.getData().add(new XYChart.Data(7.3, 110.3));
-        series1.getData().add(new XYChart.Data(2.7, 41.2));
-        series1.getData().add(new XYChart.Data(1,200));
+        int i = 0;
+        while (data.total_strake != null){
+            series1.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
+            i++;
+        }
 
-        sc.setPrefSize(500, 400);
+        sc.setPrefSize(800, 500);
         sc.getData().addAll(series1);
         Scene scene  = new Scene(new Group());
         final VBox vbox = new VBox();

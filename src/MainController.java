@@ -28,6 +28,7 @@ public class MainController extends DataModel {
                     break;
                 case 4:
                     play(args);
+                    System.exit(0);
                     break;
                 case 5:
                     System.exit(0);
@@ -114,6 +115,7 @@ public class MainController extends DataModel {
         String login = input.nextLine();
 
         data.getSize(login);
+        data.getBet(login);
         Application.launch(ChartView.class, args);
     }
 }
