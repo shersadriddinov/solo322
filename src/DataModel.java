@@ -6,8 +6,8 @@ public class DataModel {
     Connection connection;
     Statement st;
     public static double sum, odd;
-    LinkedList<Double> total_strake = new LinkedList<Double>();
-    LinkedList<Double> odds = new LinkedList<Double>();
+    LinkedList<Double> total_strake = new LinkedList<>();
+    LinkedList<Double> odds = new LinkedList<>();
 
     // Establishing connection to Database
     public DataModel(){
@@ -133,9 +133,16 @@ public class DataModel {
             String query = "SELECT * FROM bet_history WHERE account_id = " + "'" + id + "'";
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
+                System.out.println("Adding");
                 total_strake.add(rs.getDouble(5));
                 odds.add(rs.getDouble(7));
             }
+
+            for (int i = 0; i < total_strake.size(); i++){
+                System.out.println(total_strake.get(i) + odds.get(i));
+            }
+            System.out.println("Size:" + total_strake.size());
+
         } catch (Exception e){
             System.out.println(e);
         }

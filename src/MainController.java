@@ -4,6 +4,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class MainController extends DataModel {
+    public static String login;
+
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
 
@@ -112,10 +114,9 @@ public class MainController extends DataModel {
 
         // Enter Login
         System.out.println("Enter login: ");
-        String login = input.nextLine();
+        login = input.nextLine();
 
         data.getSize(login);
-        data.getBet(login);
         Application.launch(ChartView.class, args);
     }
 }
