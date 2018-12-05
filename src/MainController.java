@@ -34,9 +34,9 @@ public class MainController extends DataModel {
                     break;
                 case 5:
                     System.exit(0);
-                    default:
-                        System.out.println("Enter appropriate integer to choose");
-                        break;
+                default:
+                    System.out.println("Enter appropriate integer to choose");
+                    break;
             }
         }
     }

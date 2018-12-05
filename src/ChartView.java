@@ -24,7 +24,7 @@ public class ChartView extends Application {
         stage.setTitle("Solo 322");
         final NumberAxis xAxis = new NumberAxis(0, Odd, (Odd / 20));
         final NumberAxis yAxis = new NumberAxis(0, Sum, (Sum / 20));
-        final ScatterChart<Number,Number> sc = new ScatterChart<Number,Number>(xAxis,yAxis);
+        final ScatterChart<Number,Number> sc = new ScatterChart<>(xAxis,yAxis);
         xAxis.setLabel("Coefficient");
         yAxis.setLabel("Sum");
         sc.setTitle("Rate overview");
@@ -36,7 +36,6 @@ public class ChartView extends Application {
         for (int i = 0; i < data.total_strake.size(); i++){
             series1.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
         }
-        System.out.println("Size:" + data.total_strake.size());
 
 
         sc.setPrefSize(800, 500);
