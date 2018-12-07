@@ -37,7 +37,6 @@ public class ChartView extends Application {
             series1.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
         }
 
-
         sc.setPrefSize(800, 500);
         sc.getData().addAll(series1);
         Scene scene  = new Scene(new Group());

@@ -136,7 +136,6 @@ public class DataModel {
                 total_strake.add(rs.getDouble(5));
                 odds.add(rs.getDouble(7));
             }
-
         } catch (Exception e){
             System.out.println(e);
         }
