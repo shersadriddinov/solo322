@@ -5,12 +5,13 @@ import java.util.LinkedList;
 public class DataModel {
     Connection connection;
     Statement st;
+    public String login;
     public double sum, odd;
     LinkedList<Double> total_strake = new LinkedList<>();
     LinkedList<Double> odds = new LinkedList<>();
 
     // Establishing connection to Database
-    public DataModel(){
+    public DataModel(String login){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
@@ -19,16 +20,17 @@ public class DataModel {
         } catch (Exception e){
             System.out.println(e);
         }
+        this.login = login;
     }
 
     // Accounts table
-    public void insertToAccount(String login, double sum) {
+    public void insertToAccount(double sum) {
         try {
             String query = "insert into accounts (Login_Name)" + "values (?)";
             PreparedStatement pre = connection.prepareStatement(query);
             pre.setString(1, login);
             pre.execute();
-            int id = verify_login(login);
+            int id = verify_login();
             query = "INSERT INTO transactions(account_id, Type_bet, Type_withdrawal, Sum, Cur_balance, Gen_income)" +
                     "values('" + id + "', '" + 0 + "', '" + 0 + "', '" + sum + "', '" + sum + "', '" + 0 + "')";
             st.executeUpdate(query);
@@ -40,12 +42,12 @@ public class DataModel {
     }
 
     // Transactions table
-    public void insertToTransactions(String login, int type_bet, int type_with, double sum) {
+    public void insertToTransactions(int type_bet, int type_with, double sum) {
         try {
             double cur_balance;
             double gen_income;
 
-            int id = verify_login(login);
+            int id = verify_login();
             String query = "SELECT Cur_Balance, Gen_Income FROM transactions WHERE account_id = " + "'" + id + "' ORDER BY ID DESC LIMIT 1";
             ResultSet rs = st.executeQuery(query);
             rs.next();
@@ -73,9 +75,9 @@ public class DataModel {
     }
 
     // Betting history
-    public void insertToBetting_history(String login, String bet, double total_strake, double odds, int status){
+    public void insertToBetting_history(String bet, double total_strake, double odds, int status){
         try{
-            insertToTransactions(login, 1, 1, total_strake);
+            insertToTransactions(1, 1, total_strake);
             double benefit = 0;
             int type_with;
             if (status == 1){
@@ -85,9 +87,9 @@ public class DataModel {
                 type_with = 1;
             }
 
-            int id = verify_login(login);
+            int id = verify_login();
 
-            insertToTransactions(login, 1, type_with, benefit);
+            insertToTransactions(1, type_with, benefit);
             st.executeUpdate("INSERT INTO bet_history(account_id, Bet, Total_Strake, Benefit, Odds, Status) " +
                     "values ('" + id + "', '" + bet + "', '" + total_strake + "', '"+ benefit + "', '" + odds + "', '" + status + "')");
             connection.close();
@@ -97,7 +99,7 @@ public class DataModel {
     }
 
     // Verifier
-    public int verify_login(String login){
+    public int verify_login(){
         try {
             String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + login + "'";
             ResultSet rs = st.executeQuery(query);
@@ -113,9 +115,9 @@ public class DataModel {
     }
 
     // get Size
-    public void getSize(String login){
+    public void getSize(){
         try {
-            int id = verify_login(login);
+            int id = verify_login();
             String query = "SELECT MAX(Total_Strake), MAX(Odds) FROM bet_history WHERE account_id = " + "'" + id + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
@@ -127,9 +129,9 @@ public class DataModel {
     }
 
     // get Bet
-    public void getBet(String login){
+    public void getBet(){
         try{
-            int id = verify_login(login);
+            int id = verify_login();
             String query = "SELECT * FROM bet_history WHERE account_id = " + "'" + id + "'";
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
