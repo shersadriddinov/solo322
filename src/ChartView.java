@@ -13,14 +13,16 @@ import javafx.stage.Stage;
 public class ChartView extends Application {
 
     DataModel data = new DataModel();
-
-    public double Sum = data.sum + (data.sum/5);
-    public double Odd = data.odd + (data.odd/5);
+    String login = "Faha";
+    public double Sum;
+    public double Odd;
 
     @Override
     public void start(Stage stage) {
-        data.getBet(MainController.login);
-
+        data.getSize(login);
+        data.getBet(login);
+        Sum = data.sum + (data.sum/5);
+        Odd = data.odd + (data.odd/5);
         stage.setTitle("Solo 322");
         final NumberAxis xAxis = new NumberAxis(0, Odd, (Odd / 20));
         final NumberAxis yAxis = new NumberAxis(0, Sum, (Sum / 20));

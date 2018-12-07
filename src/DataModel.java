@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class DataModel {
     Connection connection;
     Statement st;
-    public static double sum, odd;
+    public double sum, odd;
     LinkedList<Double> total_strake = new LinkedList<>();
     LinkedList<Double> odds = new LinkedList<>();
 
