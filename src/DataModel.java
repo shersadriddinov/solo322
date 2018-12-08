@@ -15,7 +15,7 @@ public class DataModel {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
-                    "javaBet", "12345");
+                    "Ulugbek", "1998166bek");
             st = connection.createStatement();
         } catch (Exception e){
             System.out.println(e);
