@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="commons-codec-1.11">
+    <CLASSES>
+      <root url="jar://E:/jre/lib/poi-4.0.1/lib/commons-codec-1.11.jar!/" />
+      <root url="jar://E:/jre/lib/poi-4.0.1/lib/commons-collections4-4.2.jar!/" />
+      <root url="jar://E:/jre/lib/poi-4.0.1/lib/commons-compress-1.18.jar!/" />
+      <root url="jar://E:/jre/lib/poi-4.0.1/lib/commons-logging-1.2.jar!/" />
+      <root url="file://E:/jre/lib" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://E:/jre/lib/poi-4.0.1/docs/apidocs/dev" />
+    </JAVADOC>
+    <SOURCES />
+    <jarDirectory url="file://E:/jre/lib" recursive="false" />
+  </library>
+</component>
