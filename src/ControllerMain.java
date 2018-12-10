@@ -37,7 +37,8 @@ public class ControllerMain extends Controller{
     public double Odd;
     @FXML
     void initialize() {
-        DataModel data = new DataModel("Faha");
+        System.out.println(getLogin());
+        DataModel data = new DataModel(getLogin());
         data.getSize();
         data.getBet();
         Sum = data.sum + (data.sum/5);

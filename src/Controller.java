@@ -96,6 +96,9 @@ public class Controller implements Initializable{
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);*/
         stage.show();
     }
+    public String getLogin(){
+        return this.login;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
