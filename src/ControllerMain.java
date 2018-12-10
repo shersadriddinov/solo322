@@ -8,7 +8,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 public class ControllerMain extends Controller{
-    String Login = this.login;
 
     @FXML
     private AreaChart<?, ?> AreaChart;
@@ -34,11 +33,16 @@ public class ControllerMain extends Controller{
     @FXML
     private CategoryAxis xs;
 
+    public double Sum;
+    public double Odd;
     @FXML
     void initialize() {
-        DataModel data = new DataModel(Login);
+        DataModel data = new DataModel("Faha");
         data.getSize();
         data.getBet();
+        Sum = data.sum + (data.sum/5);
+        Odd = data.odd + (data.odd/5);
+
         //AREA CHART
         XYChart.Series setl = new XYChart.Series<>();
         for (int i = 0; i <= data.odds.size(); i++){

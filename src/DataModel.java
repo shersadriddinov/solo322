@@ -101,7 +101,7 @@ public class DataModel {
     // Verifier
     public int verify_login(){
         try {
-            String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + login + "'";
+            String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + this.login + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
             int id = rs.getInt(1);

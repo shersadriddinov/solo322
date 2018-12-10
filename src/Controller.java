@@ -1,13 +1,7 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import java.util.*;
+import javafx.fxml.*;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -78,7 +72,7 @@ public class Controller implements Initializable{
         imageView.setImage(file);
     }
     public void enterLogin()throws IOException{
-        login = login_field.getText();
+        this.login = login_field.getText();
         Stage stage = (Stage) button_enter.getScene().getWindow();
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_files/main_page.fxml"));
