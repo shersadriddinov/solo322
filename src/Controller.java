@@ -1,11 +1,14 @@
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+
+import javafx.application.Platform;
 import javafx.fxml.*;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -43,6 +46,15 @@ public class Controller implements Initializable{
     private ListView listview;
 
     @FXML
+    private ImageView exit_button1;
+
+    @FXML
+    public void buttonExitClick() {
+        Platform.exit();
+    }
+
+
+    @FXML
     private ImageView imageView;
     public void imageViewClick() {
         FileChooser fc = new FileChooser();
@@ -73,6 +85,13 @@ public class Controller implements Initializable{
     }
     public void enterLogin()throws IOException{
         this.login = login_field.getText();
+        if (login_field.getText() == null || login_field.getText().trim().isEmpty()) {
+            Alert fail= new Alert(Alert.AlertType.ERROR);
+            fail.setTitle("Error!");
+            fail.setHeaderText("Login field or file is empty. Please, enter! ");
+            fail.showAndWait();
+        }
+        else {
         Stage stage = (Stage) button_enter.getScene().getWindow();
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_files/main_page.fxml"));
@@ -95,6 +114,7 @@ public class Controller implements Initializable{
         });
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);*/
         stage.show();
+        }
     }
     public String getLogin(){
         return this.login;

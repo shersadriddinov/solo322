@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
@@ -13,49 +15,56 @@
 <?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerMain">
-   <children>
-      <TabPane prefHeight="768.0" prefWidth="1366.0" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Untitled Tab 1">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="226.0">
-                     <children>
-                        <ScatterChart fx:id="ScatterChart" layoutX="14.0" layoutY="14.0" style="-fx-background-color: #fff;" title="ScatterChart">
-                          <xAxis>
-                            <CategoryAxis label="odds" side="BOTTOM" fx:id="xs" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis fx:id="ys" label="sum" side="LEFT" />
-                          </yAxis>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </ScatterChart>
-                        <AreaChart fx:id="AreaChart" layoutX="531.0" layoutY="13.0" style="-fx-background-color: #fff;" title="Area Chart">
-                          <xAxis>
-                            <CategoryAxis label="odds" side="BOTTOM" fx:id="x" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis fx:id="y" label="sum" side="LEFT" />
-                          </yAxis>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </AreaChart>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Untitled Tab 2">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-   <effect>
-      <DropShadow />
-   </effect>
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerMain">
+    <children>
+        <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/background.jpg" />
+            </image>
+        </ImageView>
+        <ScatterChart fx:id="ScatterChart" layoutX="12.0" layoutY="13.0" style="-fx-background-color: #fff;" title="ScatterChart">
+            <xAxis>
+                <NumberAxis label="odds" side="BOTTOM" fx:id="xs" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="ys" label="sum" side="LEFT" />
+            </yAxis>
+            <effect>
+                <DropShadow />
+            </effect>
+        </ScatterChart>
+        <AreaChart fx:id="AreaChart" layoutX="523.0" layoutY="13.0" style="-fx-background-color: #fff;" title="Area Chart">
+            <xAxis>
+                <NumberAxis label="odds" side="BOTTOM" fx:id="x" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="y" label="sum" side="LEFT" />
+            </yAxis>
+            <effect>
+                <DropShadow />
+            </effect>
+        </AreaChart>
+        <AnchorPane layoutX="1034.0" maxHeight="1.7976931348623157E308" prefHeight="768.0" prefWidth="332.0" style="-fx-background-color: fff;">
+            <children>
+                <Button layoutX="5.0" layoutY="415.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" text="Add account" />
+                <ScrollPane layoutX="5.0" layoutY="8.0" prefHeight="402.0" prefWidth="323.0" style="-fx-background-color: fff;" vbarPolicy="ALWAYS">
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" height="10.5" radius="4.75" width="10.5" />
+                    </effect>
+                    <content>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="404.0" prefWidth="317.0" style="-fx-background-color: fff;" />
+                    </content>
+                </ScrollPane>
+                <Button layoutX="201.0" layoutY="415.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" text="Delete account" />
+                <Button fx:id="exit_button" layoutX="86.0" layoutY="694.0" mnemonicParsing="false" onAction="#buttonExitClick" prefHeight="26.0" prefWidth="165.0" text="Exit ">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+    <effect>
+        <DropShadow />
+    </effect>
 </AnchorPane>
