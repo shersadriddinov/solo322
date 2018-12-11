@@ -11,7 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="main" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,6 +29,10 @@
          </image>
       </ImageView>
       <TextField id="login_field" fx:id="login_field" layoutX="361.0" layoutY="88.0" onAction="#enterLogin" prefHeight="25.0" prefWidth="200.0" promptText="Login" />
+      <ImageView fx:id="exit_button1" fitHeight="25.0" fitWidth="25.0" layoutX="567.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#buttonExitClick">
+         <image>
+            <Image url="@../images/exit.png" />
+         </image></ImageView>
    </children>
    <effect>
       <DropShadow />
