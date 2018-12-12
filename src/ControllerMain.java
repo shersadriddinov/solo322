@@ -1,5 +1,8 @@
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.ScatterChart;
@@ -7,8 +10,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
-public class ControllerMain extends Controller{
-
+public class ControllerMain {
+    DataModel data = new DataModel("Faha");
     @FXML
     private AreaChart<?, ?> AreaChart;
 
@@ -22,7 +25,7 @@ public class ControllerMain extends Controller{
     private URL location;
 
     @FXML
-    private CategoryAxis x;
+    private NumberAxis x;
 
     @FXML
     private NumberAxis y;
@@ -31,31 +34,49 @@ public class ControllerMain extends Controller{
     private NumberAxis ys;
 
     @FXML
-    private CategoryAxis xs;
+    private NumberAxis xs;
 
-    public double Sum;
-    public double Odd;
+    @FXML
+    public void buttonExitClick(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+
     @FXML
     void initialize() {
-        System.out.println(getLogin());
-        DataModel data = new DataModel(getLogin());
+        data.getBet();
+        //AREA CHART
+        XYChart.Series setl = new XYChart.Series<>();
+        for (int i = 0; i < data.odds.size(); i++){
+            setl.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
+        }
+        AreaChart.getData().add(setl);
+
+        //SCATTER CHART
+        XYChart.Series set2 = new XYChart.Series<>();
+        for (int i = 0; i < data.odds.size(); i++){
+            set2.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
+        }
+        ScatterChart.getData().add(set2);
+/*
+
+        Controller c = new Controller();
+        System.out.println(c.getLogin());
+        DataModel data = new DataModel(c.getLogin());
         data.getSize();
         data.getBet();
         Sum = data.sum + (data.sum/5);
         Odd = data.odd + (data.odd/5);
 
         //AREA CHART
-        XYChart.Series setl = new XYChart.Series<>();
         for (int i = 0; i <= data.odds.size(); i++){
             setl.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
         }
         AreaChart.getData().addAll(setl);
 
         //SCATTER CHART
-        XYChart.Series set2 = new XYChart.Series<>();
         for (int i = 0; i <= data.odds.size(); i++){
             set2.getData().add(new XYChart.Data(data.odds.get(i), data.total_strake.get(i)));
         }
         ScatterChart.getData().addAll(set2);
-    }
+*/  }
 }
