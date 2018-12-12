@@ -11,7 +11,7 @@ public class Parser {
         double  total_strake, odd, temp;
         int status;
         String name;
-        File src = new File("E:/Projects/javaBet/solo322/src/Dataset/EXCEL.xlsx");
+        File src = new File("src/Dataset/EXCEL.xlsx");
         FileInputStream fis = new FileInputStream(src);
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet1 = wb.getSheetAt(0);
