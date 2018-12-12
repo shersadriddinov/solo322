@@ -8,43 +8,45 @@ import java.io.*;
 import java.lang.Double;
 public class Parser {
     public static void main(String[] args) throws IOException {
-        double  total_strake, c,d;
+        double  total_strake, odd;
+        int status;
+        String name;
         File src = new File("D:/javebet/solo322/src/Dataset/EXCEL.xlsx");
         FileInputStream fis = new FileInputStream(src);
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-
         XSSFSheet sheet1 = wb.getSheetAt(0);
         DataFormatter formatter = new DataFormatter();
+
+        // Connecting to database
+        DataModel data = new DataModel("Tester");
+        data.insertToAccount(10000);
 
         int rowcount = sheet1.getLastRowNum();
         System.out.println("Total Row " + rowcount);
 
-        for (int i=1; i<=rowcount; i++)
-        {
+        for (int i = 1; i <= rowcount; i++) {
+            // Bet
             Cell cell = sheet1.getRow(i).getCell(0);
-            String name = formatter.formatCellValue(cell);
-            System.out.println(" "+name);
-        }
-        for (int i=1; i<=rowcount; i++)
-        {
-            System.out.println(" ");
-            Cell cell1=sheet1.getRow(i).getCell(1);
+            name = formatter.formatCellValue(cell);
+            System.out.println(name);
+
+            // Total Strake
+            Cell cell1 = sheet1.getRow(i).getCell(1);
             total_strake = cell1.getNumericCellValue();
-            System.out.print(" "+total_strake);
-        }
-        for (int i=1; i<=rowcount; i++)
-        {
-            System.out.println(" ");
-            Cell cell2=sheet1.getRow(i).getCell(2);
-            c= cell2.getNumericCellValue();
-            System.out.print(c+" ");
-        }
-        for (int i=1; i<=rowcount ; i++)
-        {
-            System.out.println(" ");
-            Cell cell3=sheet1.getRow(i).getCell(3);
-            d= cell3.getNumericCellValue();
-            System.out.print(d);
+            System.out.print(total_strake);
+
+            // Odd
+            Cell cell2 = sheet1.getRow(i).getCell(2);
+            odd = cell2.getNumericCellValue();
+            System.out.print(odd);
+
+            // Status
+            Cell cell3 = sheet1.getRow(i).getCell(3);
+            status = cell3.getNumericCellValue();
+            System.out.println(status);
+
+            // Inserting to database
+            data.insertToBetting_history(name, total_strake, odd, status);
         }
         wb.close();
     }
