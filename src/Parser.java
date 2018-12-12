@@ -8,8 +8,8 @@ import java.io.*;
 import java.lang.Double;
 public class Parser {
     public static void main(String[] args) throws IOException {
-        double  b, c,d;
-        File src = new File("EXCEL.xlsx");
+        double  total_strake, c,d;
+        File src = new File("D:/javebet/solo322/src/Dataset/EXCEL.xlsx");
         FileInputStream fis = new FileInputStream(src);
         XSSFWorkbook wb = new XSSFWorkbook(fis);
 
@@ -19,27 +19,27 @@ public class Parser {
         int rowcount = sheet1.getLastRowNum();
         System.out.println("Total Row " + rowcount);
 
-        for (int i=1; i<28; i++)
+        for (int i=1; i<=rowcount; i++)
         {
-                Cell cell = sheet1.getRow(i).getCell(0);
-                String a = formatter.formatCellValue(cell);
-                System.out.println(" "+a);
+            Cell cell = sheet1.getRow(i).getCell(0);
+            String name = formatter.formatCellValue(cell);
+            System.out.println(" "+name);
         }
-        for (int i=1; i<27; i++)
+        for (int i=1; i<=rowcount; i++)
         {
             System.out.println(" ");
             Cell cell1=sheet1.getRow(i).getCell(1);
-            b = cell1.getNumericCellValue();
-            System.out.print(" "+b);
+            total_strake = cell1.getNumericCellValue();
+            System.out.print(" "+total_strake);
         }
-        for (int i=1; i<27; i++)
+        for (int i=1; i<=rowcount; i++)
         {
             System.out.println(" ");
             Cell cell2=sheet1.getRow(i).getCell(2);
-            c= new Double(cell2.getNumericCellValue());
+            c= cell2.getNumericCellValue();
             System.out.print(c+" ");
         }
-        for (int i=1; i<27 ; i++)
+        for (int i=1; i<=rowcount ; i++)
         {
             System.out.println(" ");
             Cell cell3=sheet1.getRow(i).getCell(3);
