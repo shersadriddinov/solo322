@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerMain">
+   <children>
+      <TabPane prefHeight="768.0" prefWidth="1366.0" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Untitled Tab 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="226.0">
+                     <children>
+                        <ScatterChart fx:id="ScatterChart" layoutX="14.0" layoutY="14.0" style="-fx-background-color: #fff;" title="ScatterChart">
+                          <xAxis>
+                            <CategoryAxis label="odds" side="BOTTOM" fx:id="xs" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="ys" label="sum" side="LEFT" />
+                          </yAxis>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ScatterChart>
+                        <AreaChart fx:id="AreaChart" layoutX="531.0" layoutY="13.0" style="-fx-background-color: #fff;" title="Area Chart">
+                          <xAxis>
+                            <CategoryAxis label="odds" side="BOTTOM" fx:id="x" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="y" label="sum" side="LEFT" />
+                          </yAxis>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </AreaChart>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>

@@ -15,7 +15,7 @@ public class DataModel {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
-                    "Ulugbek", "1998166bek");
+                    "javaBet", "12345");
             st = connection.createStatement();
         } catch (Exception e){
             System.out.println(e);
@@ -101,7 +101,7 @@ public class DataModel {
     // Verifier
     public int verify_login(){
         try {
-            String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + login + "'";
+            String query = "SELECT ID FROM accounts WHERE Login_Name = " + "'" + this.login + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
             int id = rs.getInt(1);
