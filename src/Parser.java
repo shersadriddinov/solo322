@@ -8,10 +8,10 @@ import java.io.*;
 import java.lang.Double;
 public class Parser {
     public static void main(String[] args) throws IOException {
-        double  total_strake, odd;
+        double  total_strake, odd, temp;
         int status;
         String name;
-        File src = new File("D:/javebet/solo322/src/Dataset/EXCEL.xlsx");
+        File src = new File("E:/Projects/javaBet/solo322/src/Dataset/EXCEL.xlsx");
         FileInputStream fis = new FileInputStream(src);
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet1 = wb.getSheetAt(0);
@@ -42,7 +42,8 @@ public class Parser {
 
             // Status
             Cell cell3 = sheet1.getRow(i).getCell(3);
-            status = cell3.getNumericCellValue();
+            temp = cell3.getNumericCellValue();
+            status = (int)temp;
             System.out.println(status);
 
             // Inserting to database

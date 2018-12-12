@@ -15,7 +15,7 @@ public class DataModel {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabet",
-                    "Ulugbek", "1998166bek");
+                    "javaBet", "12345");
             st = connection.createStatement();
         } catch (Exception e){
             System.out.println(e);
@@ -35,7 +35,6 @@ public class DataModel {
                     "values('" + id + "', '" + 0 + "', '" + 0 + "', '" + sum + "', '" + sum + "', '" + 0 + "')";
             st.executeUpdate(query);
             System.out.println("Successfully added");
-            connection.close();
         } catch (Exception e){
             System.out.println(e);
         }
@@ -92,7 +91,6 @@ public class DataModel {
             insertToTransactions(1, type_with, benefit);
             st.executeUpdate("INSERT INTO bet_history(account_id, Bet, Total_Strake, Benefit, Odds, Status) " +
                     "values ('" + id + "', '" + bet + "', '" + total_strake + "', '"+ benefit + "', '" + odds + "', '" + status + "')");
-            connection.close();
         } catch (Exception e){
             System.out.println(e);
         }
