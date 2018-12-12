@@ -26,6 +26,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Controller implements Initializable{
+
+    @FXML
+    public String login;
+
+
+
     @FXML
     private ResourceBundle resources;
 
@@ -75,42 +81,42 @@ public class Controller implements Initializable{
         }
     }
     @FXML
-    void handleDrop(DragEvent event) throws FileNotFoundException {
+    public void handleDrop(DragEvent event) throws FileNotFoundException {
         List<File>files = event.getDragboard().getFiles();
         Image file = new Image(new FileInputStream(files.get(0)));
         imageView.setImage(file);
     }
-    public void enterLogin()throws IOException{
-        String login = login_field.getText();
+    public void enterLogin()throws IOException {
+        this.login = login_field.getText();
+        ControllerMain cm = new ControllerMain(this.login);
         if (login_field.getText() == null || login_field.getText().trim().isEmpty()) {
-            Alert fail= new Alert(Alert.AlertType.ERROR);
+            Alert fail = new Alert(Alert.AlertType.ERROR);
             fail.setTitle("Error!");
             fail.setHeaderText("Login field or file is empty. Please, enter! ");
             fail.showAndWait();
-        }
-        else {
-        Stage stage = (Stage) button_enter.getScene().getWindow();
-        stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_files/main_page.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Другая форма");
-        stage.setScene(new Scene(root1));
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
-        stage.setX(bounds.getMinX());
-        stage.setY(bounds.getMinY());
-        stage.setWidth(bounds.getWidth());
-        stage.setHeight(bounds.getHeight());
-        stage.setMaximized(true);
-        stage.setFullScreen(true);
-        /*stage.setOnCloseRequest(event -> {
-            //Handle
-            event.consume();
-        });
-        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);*/
-        stage.show();
+        } else {
+            Stage stage = (Stage) button_enter.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_files/main_page.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Другая форма");
+            stage.setScene(new Scene(root1));
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+            stage.setX(bounds.getMinX());
+            stage.setY(bounds.getMinY());
+            stage.setWidth(bounds.getWidth());
+            stage.setHeight(bounds.getHeight());
+            stage.setMaximized(true);
+            stage.setFullScreen(true);
+            /*stage.setOnCloseRequest(event -> {
+                //Handle
+                event.consume();
+            });
+            stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);*/
+            stage.show();
         }
     }
     @Override
